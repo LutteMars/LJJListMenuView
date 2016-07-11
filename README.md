@@ -29,20 +29,20 @@
 #### 5.使用（Usage）
 - 将该插件集成到你的项目（工程中）
 
-![集成](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/add.png)
+    ![集成](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/add.png)
 - 如果需要修改下拉列表的样式，在*__GlobalConstant.swift__*中修改对应的参数
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
-```Swift
-self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2, dataArray:  self.dataArray,resultHandler: { (data) in
-      unSelf.itemTF2.text = data as? String
-      }))
-```
+    ```Swift
+    self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2, dataArray:      self.dataArray,resultHandler: { (data) in
+          unSelf.itemTF2.text = data as? String
+          }))
+    ```
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
-```Swift
-self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CENTER,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
-unSelf.itemTF1.text = data as? String
-}))
-```
+    ```Swift
+    self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CENTER,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
+          unSelf.itemTF1.text = data as? String
+          }))
+    ```
 
