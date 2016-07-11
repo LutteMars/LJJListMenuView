@@ -37,8 +37,9 @@
     ```Swift
      self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
        dataArray:self.dataArray,resultHandler: { (data) in
+       // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF2.text = data as? String
-          }))
+      }))
     ```
   默认下拉列表位置居中效果如图所示：
   ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
@@ -49,8 +50,9 @@
      self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
        popViewPosition:PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
        resultHandler: { (data) in
+       // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF1.text = data as? String
-          }))
+      }))
     ```
   自定义下拉列表位置相对于*__self.itemTF1__*底部中点位置偏移量为*__(10,20)__*效果如图所示：
   ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
