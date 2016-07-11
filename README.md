@@ -46,8 +46,9 @@
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
-     self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition:  
-       PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
+     self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
+       popViewPosition:PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
+       resultHandler: { (data) in
           unSelf.itemTF1.text = data as? String
           }))
     ```
@@ -56,4 +57,4 @@
   
   
 #### 6.说明（Statement）
-    该插件属于开源项目，欢迎大家使用。如果您能提出意见和建议，这是再好不过了。
+该插件属于开源项目，欢迎大家使用。如果您能提出意见和建议，这是再好不过了。
