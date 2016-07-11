@@ -32,6 +32,7 @@
 ![集成](http://baidu.com)
 - 如果需要修改下拉列表的样式，在*__GlobalConstant.swift__*中修改对应的参数
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
+
  ```Swift
   self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2, dataArray: self.dataArray,resultHandler: { (data) in
       unSelf.itemTF2.text = data as? String
