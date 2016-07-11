@@ -48,7 +48,7 @@
 
     ```Swift
      self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
-       popViewPosition:PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
+       popViewPosition:PopViewPositon.CUSTOM, offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
        resultHandler: { (data) in
        // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF1.text = data as? String
