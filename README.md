@@ -53,5 +53,5 @@
   自定义下拉列表位置相对于*__self.itemTF1__*底部中点位置偏移量为*__(10,20)__*效果如图所示：
   ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
   
-#### 5.说明（Statement）
-  该插件属于开源项目，欢迎大家使用。如果您能提出意见和建议，这是再好不过了。
+#### 6.说明（Statement）
+   该插件属于开源项目，欢迎大家使用。如果您能提出意见和建议，这是再好不过了。
