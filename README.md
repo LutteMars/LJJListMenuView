@@ -50,5 +50,5 @@
           unSelf.itemTF1.text = data as? String
           }))
     ```
-  自定义下拉列表位置相对于*_self.itemTF1_*底部中点位置偏移量为*_(10,20)_*效果所示：
+  自定义下拉列表位置相对于*__self.itemTF1__*底部中点位置偏移量为*__(10,20)__*效果如图所示：
   ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
