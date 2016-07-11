@@ -23,8 +23,7 @@
 - **Swift 2.0**
 
 #### 4.交流（Communication）
-    如果您在浏览和使用该插件的过程中发现了bug或者是不合理的地方，请提供给我您的意见和建议，
-    我将依据您的宝贵意见作出相应的修改和更新。请发邮件至我的邮箱:  **__livjunjie@163.com__**
+如果您在浏览和使用该插件的过程中发现了bug或者是不合理的地方，请提供给我您的意见和建议，我将依据您的宝贵意见作出相应的修改和更新。请发邮件至我的邮箱:  **__livjunjie@163.com__**
 
 #### 5.使用（Usage）
 - 将该插件集成到你的项目（工程中）
@@ -36,7 +35,7 @@
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
     ```Swift
-       self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
+     self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
        dataArray:self.dataArray,resultHandler: { (data) in
           unSelf.itemTF2.text = data as? String
           }))
@@ -47,7 +46,7 @@
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
-       self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition:  
+     self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition:  
        PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
           unSelf.itemTF1.text = data as? String
           }))
