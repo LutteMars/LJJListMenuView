@@ -49,4 +49,5 @@
           unSelf.itemTF1.text = data as? String
           }))
     ```
-
+   效果图如下所示：
+    ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
