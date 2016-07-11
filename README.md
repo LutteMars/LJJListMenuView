@@ -40,6 +40,8 @@
           unSelf.itemTF2.text = data as? String
           }))
     ```
+   效果图如下所示：
+    ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
