@@ -31,6 +31,8 @@
 
     ![集成](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/add.png)
 - 如果需要修改下拉列表的样式，在*__GlobalConstant.swift__*中修改对应的参数
+
+    ![全局常量](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/globalconstant.png)
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
     ```Swift
