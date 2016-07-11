@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		487485201D2CCB180000249A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4874851F1D2CCB180000249A /* AppDelegate.swift */; };
+		487485221D2CCB180000249A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487485211D2CCB180000249A /* ViewController.swift */; };
+		487485251D2CCB180000249A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487485231D2CCB180000249A /* Main.storyboard */; };
+		487485271D2CCB180000249A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487485261D2CCB180000249A /* Assets.xcassets */; };
+		4874852A1D2CCB180000249A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487485281D2CCB180000249A /* LaunchScreen.storyboard */; };
+		487485351D2CCB180000249A /* LJJListMenuViewDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487485341D2CCB180000249A /* LJJListMenuViewDemoTests.swift */; };
+		487485401D2CCB180000249A /* LJJListMenuViewDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4874853F1D2CCB180000249A /* LJJListMenuViewDemoUITests.swift */; };
+		4874854F1D2CCB630000249A /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4874854E1D2CCB630000249A /* GlobalConstant.swift */; };
+		487485511D2CCBB30000249A /* LJJTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487485501D2CCBB30000249A /* LJJTableView.swift */; };
+		487485541D2CCBFF0000249A /* LJJTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487485521D2CCBFF0000249A /* LJJTableViewCell.swift */; };
+		487485551D2CCBFF0000249A /* LJJTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487485531D2CCBFF0000249A /* LJJTableViewCell.xib */; };
+		487485571D2CCC420000249A /* LJJListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487485561D2CCC420000249A /* LJJListMenuView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		487485311D2CCB180000249A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 487485141D2CCB180000249A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4874851B1D2CCB180000249A;
+			remoteInfo = LJJListMenuViewDemo;
+		};
+		4874853C1D2CCB180000249A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 487485141D2CCB180000249A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4874851B1D2CCB180000249A;
+			remoteInfo = LJJListMenuViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4874851C1D2CCB180000249A /* LJJListMenuViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LJJListMenuViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4874851F1D2CCB180000249A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		487485211D2CCB180000249A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		487485241D2CCB180000249A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		487485261D2CCB180000249A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		487485291D2CCB180000249A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4874852B1D2CCB180000249A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		487485301D2CCB180000249A /* LJJListMenuViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJJListMenuViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		487485341D2CCB180000249A /* LJJListMenuViewDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJJListMenuViewDemoTests.swift; sourceTree = "<group>"; };
+		487485361D2CCB180000249A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4874853B1D2CCB180000249A /* LJJListMenuViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LJJListMenuViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4874853F1D2CCB180000249A /* LJJListMenuViewDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LJJListMenuViewDemoUITests.swift; sourceTree = "<group>"; };
+		487485411D2CCB180000249A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4874854E1D2CCB630000249A /* GlobalConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
+		487485501D2CCBB30000249A /* LJJTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LJJTableView.swift; sourceTree = "<group>"; };
+		487485521D2CCBFF0000249A /* LJJTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LJJTableViewCell.swift; sourceTree = "<group>"; };
+		487485531D2CCBFF0000249A /* LJJTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJJTableViewCell.xib; sourceTree = "<group>"; };
+		487485561D2CCC420000249A /* LJJListMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LJJListMenuView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		487485191D2CCB180000249A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4874852D1D2CCB180000249A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487485381D2CCB180000249A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		487485131D2CCB180000249A = {
+			isa = PBXGroup;
+			children = (
+				4874851E1D2CCB180000249A /* LJJListMenuViewDemo */,
+				487485331D2CCB180000249A /* LJJListMenuViewDemoTests */,
+				4874853E1D2CCB180000249A /* LJJListMenuViewDemoUITests */,
+				4874851D1D2CCB180000249A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4874851D1D2CCB180000249A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4874851C1D2CCB180000249A /* LJJListMenuViewDemo.app */,
+				487485301D2CCB180000249A /* LJJListMenuViewDemoTests.xctest */,
+				4874853B1D2CCB180000249A /* LJJListMenuViewDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4874851E1D2CCB180000249A /* LJJListMenuViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4874854D1D2CCB360000249A /* LJJListMenu */,
+				4874851F1D2CCB180000249A /* AppDelegate.swift */,
+				487485211D2CCB180000249A /* ViewController.swift */,
+				487485231D2CCB180000249A /* Main.storyboard */,
+				487485261D2CCB180000249A /* Assets.xcassets */,
+				487485281D2CCB180000249A /* LaunchScreen.storyboard */,
+				4874852B1D2CCB180000249A /* Info.plist */,
+			);
+			path = LJJListMenuViewDemo;
+			sourceTree = "<group>";
+		};
+		487485331D2CCB180000249A /* LJJListMenuViewDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				487485341D2CCB180000249A /* LJJListMenuViewDemoTests.swift */,
+				487485361D2CCB180000249A /* Info.plist */,
+			);
+			path = LJJListMenuViewDemoTests;
+			sourceTree = "<group>";
+		};
+		4874853E1D2CCB180000249A /* LJJListMenuViewDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4874853F1D2CCB180000249A /* LJJListMenuViewDemoUITests.swift */,
+				487485411D2CCB180000249A /* Info.plist */,
+			);
+			path = LJJListMenuViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		4874854D1D2CCB360000249A /* LJJListMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4874854E1D2CCB630000249A /* GlobalConstant.swift */,
+				487485521D2CCBFF0000249A /* LJJTableViewCell.swift */,
+				487485531D2CCBFF0000249A /* LJJTableViewCell.xib */,
+				487485501D2CCBB30000249A /* LJJTableView.swift */,
+				487485561D2CCC420000249A /* LJJListMenuView.swift */,
+			);
+			name = LJJListMenu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4874851B1D2CCB180000249A /* LJJListMenuViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487485441D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemo" */;
+			buildPhases = (
+				487485181D2CCB180000249A /* Sources */,
+				487485191D2CCB180000249A /* Frameworks */,
+				4874851A1D2CCB180000249A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LJJListMenuViewDemo;
+			productName = LJJListMenuViewDemo;
+			productReference = 4874851C1D2CCB180000249A /* LJJListMenuViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4874852F1D2CCB180000249A /* LJJListMenuViewDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 487485471D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemoTests" */;
+			buildPhases = (
+				4874852C1D2CCB180000249A /* Sources */,
+				4874852D1D2CCB180000249A /* Frameworks */,
+				4874852E1D2CCB180000249A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				487485321D2CCB180000249A /* PBXTargetDependency */,
+			);
+			name = LJJListMenuViewDemoTests;
+			productName = LJJListMenuViewDemoTests;
+			productReference = 487485301D2CCB180000249A /* LJJListMenuViewDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4874853A1D2CCB180000249A /* LJJListMenuViewDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4874854A1D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemoUITests" */;
+			buildPhases = (
+				487485371D2CCB180000249A /* Sources */,
+				487485381D2CCB180000249A /* Frameworks */,
+				487485391D2CCB180000249A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4874853D1D2CCB180000249A /* PBXTargetDependency */,
+			);
+			name = LJJListMenuViewDemoUITests;
+			productName = LJJListMenuViewDemoUITests;
+			productReference = 4874853B1D2CCB180000249A /* LJJListMenuViewDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		487485141D2CCB180000249A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "刘俊杰";
+				TargetAttributes = {
+					4874851B1D2CCB180000249A = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					4874852F1D2CCB180000249A = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4874851B1D2CCB180000249A;
+					};
+					4874853A1D2CCB180000249A = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 4874851B1D2CCB180000249A;
+					};
+				};
+			};
+			buildConfigurationList = 487485171D2CCB180000249A /* Build configuration list for PBXProject "LJJListMenuViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 487485131D2CCB180000249A;
+			productRefGroup = 4874851D1D2CCB180000249A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4874851B1D2CCB180000249A /* LJJListMenuViewDemo */,
+				4874852F1D2CCB180000249A /* LJJListMenuViewDemoTests */,
+				4874853A1D2CCB180000249A /* LJJListMenuViewDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4874851A1D2CCB180000249A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487485551D2CCBFF0000249A /* LJJTableViewCell.xib in Resources */,
+				4874852A1D2CCB180000249A /* LaunchScreen.storyboard in Resources */,
+				487485271D2CCB180000249A /* Assets.xcassets in Resources */,
+				487485251D2CCB180000249A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4874852E1D2CCB180000249A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487485391D2CCB180000249A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		487485181D2CCB180000249A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487485571D2CCC420000249A /* LJJListMenuView.swift in Sources */,
+				487485511D2CCBB30000249A /* LJJTableView.swift in Sources */,
+				4874854F1D2CCB630000249A /* GlobalConstant.swift in Sources */,
+				487485541D2CCBFF0000249A /* LJJTableViewCell.swift in Sources */,
+				487485221D2CCB180000249A /* ViewController.swift in Sources */,
+				487485201D2CCB180000249A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4874852C1D2CCB180000249A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487485351D2CCB180000249A /* LJJListMenuViewDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		487485371D2CCB180000249A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				487485401D2CCB180000249A /* LJJListMenuViewDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		487485321D2CCB180000249A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4874851B1D2CCB180000249A /* LJJListMenuViewDemo */;
+			targetProxy = 487485311D2CCB180000249A /* PBXContainerItemProxy */;
+		};
+		4874853D1D2CCB180000249A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4874851B1D2CCB180000249A /* LJJListMenuViewDemo */;
+			targetProxy = 4874853C1D2CCB180000249A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		487485231D2CCB180000249A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				487485241D2CCB180000249A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		487485281D2CCB180000249A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				487485291D2CCB180000249A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		487485421D2CCB180000249A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		487485431D2CCB180000249A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		487485451D2CCB180000249A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LJJListMenuViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		487485461D2CCB180000249A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LJJListMenuViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		487485481D2CCB180000249A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LJJListMenuViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LJJListMenuViewDemo.app/LJJListMenuViewDemo";
+			};
+			name = Debug;
+		};
+		487485491D2CCB180000249A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LJJListMenuViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LJJListMenuViewDemo.app/LJJListMenuViewDemo";
+			};
+			name = Release;
+		};
+		4874854B1D2CCB180000249A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LJJListMenuViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LJJListMenuViewDemo;
+			};
+			name = Debug;
+		};
+		4874854C1D2CCB180000249A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LJJListMenuViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qmc.-13213.LJJListMenuViewDemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LJJListMenuViewDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		487485171D2CCB180000249A /* Build configuration list for PBXProject "LJJListMenuViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487485421D2CCB180000249A /* Debug */,
+				487485431D2CCB180000249A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		487485441D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487485451D2CCB180000249A /* Debug */,
+				487485461D2CCB180000249A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		487485471D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				487485481D2CCB180000249A /* Debug */,
+				487485491D2CCB180000249A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4874854A1D2CCB180000249A /* Build configuration list for PBXNativeTarget "LJJListMenuViewDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4874854B1D2CCB180000249A /* Debug */,
+				4874854C1D2CCB180000249A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 487485141D2CCB180000249A /* Project object */;
+}
