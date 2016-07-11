@@ -36,7 +36,8 @@
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
     ```Swift
-    self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2, dataArray:self.dataArray,resultHandler: { (data) in
+       self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
+       dataArray:self.dataArray,resultHandler: { (data) in
           unSelf.itemTF2.text = data as? String
           }))
     ```
@@ -46,7 +47,8 @@
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
-    self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
+       self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition:  
+       PopViewPositon.CUSTOM,offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
           unSelf.itemTF1.text = data as? String
           }))
     ```
