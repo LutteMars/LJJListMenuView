@@ -36,7 +36,7 @@
 
     ```Swift
      self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
-       dataArray:self.dataArray,resultHandler: { (data) in
+       dataArray:self.dataArray, resultHandler: { (data) in
        // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF2.text = data as? String
       }))
