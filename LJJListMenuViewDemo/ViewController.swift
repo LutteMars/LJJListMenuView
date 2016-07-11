@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         unowned let unSelf:ViewController = self
         
         if self.isClicked == true {
-            self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CENTER, offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
+            self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CUSTOM, offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
                 unSelf.itemTF1.text = data as? String
                 unSelf.isClicked = true
             }))
