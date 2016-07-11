@@ -40,8 +40,9 @@
           unSelf.itemTF2.text = data as? String
           }))
     ```
-   效果图如下所示：
-    ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
+  默认下拉列表位置居中效果如图所示：
+  ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
+  
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
@@ -49,5 +50,5 @@
           unSelf.itemTF1.text = data as? String
           }))
     ```
-   效果图如下所示：
-    ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
+  自定义下拉列表位置相对于*_self.itemTF1_*底部中点位置偏移量为*_(10,20)_*效果所示：
+  ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
