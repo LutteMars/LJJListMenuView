@@ -42,7 +42,7 @@
           unSelf.itemTF2.text = data as? String
       }))
     ```
-  默认下拉列表的位置居中效果如下图所示：
+        默认下拉列表的位置居中效果如下图所示：
   ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
   
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
