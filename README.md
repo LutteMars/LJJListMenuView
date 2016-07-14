@@ -40,12 +40,12 @@
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
     ```Swift
-    // 将下拉列表添加到当前视图控制器的view中
-     self.view.addSubview(LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
+    // 直接调用默认设置下拉列表位置居中的方法
+     LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
        dataArray:self.dataArray, resultHandler: { (data) in
        // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF2.text = data as? String
-      }))
+      })
     ```
   默认下拉列表的位置[*__该位置指贴近的视图的底边中点的位置__*]居中效果如下图所示：
   ![位置居中](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/center.png)
@@ -53,13 +53,13 @@
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
-    // 将下拉列表添加到当前视图控制器的view中
-     self.view.addSubview(LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
+    // 直接调用自定义下拉列表位置的方法
+     LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
        popViewPosition:PopViewPositon.CUSTOM, offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
        resultHandler: { (data) in
        // 在这里进行cell点击事件之后的操作，如获取相应的值
           unSelf.itemTF1.text = data as? String
-      }))
+      })
     ```
   自定义下拉列表位置相对于 *__self.itemTF1__* 底部中点位置偏移量为 *__(10,20)__* 效果如下图所示：
   ![自定义位置](https://github.com/LutteMars/LJJListMenuView/blob/master/Pictures/custom.png)
