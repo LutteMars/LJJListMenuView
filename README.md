@@ -1,4 +1,4 @@
-### LJJListMenuView
+## LJJListMenuView
 ###目录
 [TOC]
 ### 1.项目简介（Introducation）
@@ -40,10 +40,10 @@
 - 使用默认下拉列表位置贴近指定视图居中显示的方法如下：
 
     ```Swift
-    // 直接调用默认设置下拉列表位置居中的方法
+    // 在视图控制器中直接调用默认设置下拉列表位置居中的方法
      LJJListMenuView.sharedInstance.setTheCenterPositionOfPopView(self.itemTF2,     
        dataArray:self.dataArray, resultHandler: { (data) in
-       // 在这里进行cell点击事件之后的操作，如获取相应的值
+       // 在这里进行cell点击事件之后的操作，如获取相应的值...
           unSelf.itemTF2.text = data as? String
       })
     ```
@@ -53,11 +53,11 @@
 - 使用自定义下拉列表位置贴近指定视图显示的方法如下：
 
     ```Swift
-    // 直接调用自定义下拉列表位置的方法
+    // 在视图控制器中直接调用自定义下拉列表位置的方法
      LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1,
        popViewPosition:PopViewPositon.CUSTOM, offSize: CGPointMake(10, 20), dataArray: self.dataArray, 
        resultHandler: { (data) in
-       // 在这里进行cell点击事件之后的操作，如获取相应的值
+       // 在这里进行cell点击事件之后的操作，如获取相应的值...
           unSelf.itemTF1.text = data as? String
       })
     ```
