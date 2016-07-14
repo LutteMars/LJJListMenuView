@@ -142,7 +142,7 @@ class LJJListMenuView: UIView {
             bezierPath.addLineToPoint(CGPointMake(point.x + TriangleBottom / 2, point.y + TriangleHeight))
             bezierPath.addLineToPoint(CGPointMake(point.x + PopViewWidth / 2, point.y + TriangleHeight))
             bezierPath.addLineToPoint(CGPointMake(point.x + PopViewWidth / 2, point.y + size.height))
-            bezierPath.addLineToPoint(CGPointMake( abs(point.x - size.width / 2), point.y + size.height))
+            bezierPath.addLineToPoint(CGPointMake(abs(point.x - size.width / 2), point.y + size.height))
             bezierPath.addLineToPoint(CGPointMake(abs(point.x - size.width / 2), point.y + TriangleHeight))
             bezierPath.addLineToPoint(CGPointMake(abs(point.x - TriangleBottom / 2), point.y + TriangleHeight))
             bezierPath.addLineToPoint(CGPointMake(point.x, point.y))
