@@ -46,7 +46,7 @@ class LJJListMenuView: UIView {
     var contentView: LJJTableView!
     
     /// 单利对象
-    internal static var sharedInstance: LJJListMenuView = {
+    static var sharedInstance: LJJListMenuView = {
         return LJJListMenuView(frame: CGRectZero)
     }()
     
