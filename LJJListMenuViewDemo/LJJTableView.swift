@@ -11,13 +11,13 @@ import UIKit
 /// cell被点击后的结果回调函数
 public typealias CellClickedBlock = (obj: AnyObject) -> Void
 
-/// cellId
-let cellId: String = "cellId"
-
 class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     var dataArray: [AnyObject]!
     var cellClickedBlock: CellClickedBlock!
+    
+    // cellId
+    static let cellId: String = "cellId"
     
     /**
      LJJTableView初始化方法
