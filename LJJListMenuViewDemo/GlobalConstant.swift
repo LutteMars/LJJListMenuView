@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 /// 获取当前窗口对象
-let window: UIWindow = UIApplication.sharedApplication().windows.last!
+let currentWindow: UIWindow = UIApplication.sharedApplication().windows.last!
 
 /// 数字常量：0
 let ZERO:CGFloat = 0

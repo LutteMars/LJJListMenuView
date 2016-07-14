@@ -15,8 +15,6 @@ class LJJTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        // 去除cell之间的线
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

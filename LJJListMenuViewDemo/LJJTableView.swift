@@ -35,6 +35,8 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.dataArray = dataArray
         self.cellClickedBlock = cellClickedBlock
         
+        self.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         self.createTableView(self.dataArray)
     }
     

@@ -71,10 +71,9 @@ class LJJListMenuView: UIView {
     }
     
     
-    //MARK: 重写UIView的绘图方法
+    //MARK: ---重写UIView的绘图方法---
     override func drawRect(rect: CGRect) {
         
-        // rect:即frame
         // 获得需要绘制的图形的起点
         let point: CGPoint = CGPointMake(PopViewWidth / 2, ZERO)
         // 获得需要绘制的图形的frame
@@ -174,7 +173,7 @@ class LJJListMenuView: UIView {
     }
     
     
-    //MARK: 弹出视图添加淡入淡出动画效果
+    //MARK: ---弹出视图添加淡入淡出动画效果---
     func popViewScaleZoom(scaleZoom: ANIMATIONSCALEZOOM) {
         
         switch scaleZoom {
@@ -214,7 +213,7 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的位置居中的下拉列表视图对象
      */
-    func setTheCenterPositionOfPopView(mainView: UIView, dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJListMenuView{
+    func setTheCenterPositionOfPopView(mainView: UIView, dataArray: [AnyObject], resultHandler: ResultHandler) {
         
         LJJListMenuView.sharedInstance = LJJListMenuView.init(frame: CGRectMake(mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2, mainView.frame.origin.y + mainView.frame.size.height, PopViewWidth, PopViewHeight))
         
@@ -226,7 +225,11 @@ class LJJListMenuView: UIView {
             resultHandler(data: data)
         }))
         
-        return LJJListMenuView.sharedInstance
+        // 将下拉列表视图添加到当前视图控制器中
+        currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
+        
+        // 你同样可以这样使用：
+        // self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
     }
     
     
@@ -241,7 +244,7 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的可自定义位置的下拉列表视图对象
      */
-    func setTheAllPositionsOfPopView(mainView: UIView, popViewPosition: PopViewPositon, offSize: CGPoint, dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJListMenuView{
+    func setTheAllPositionsOfPopView(mainView: UIView, popViewPosition: PopViewPositon, offSize: CGPoint, dataArray: [AnyObject], resultHandler: ResultHandler) {
         
         //        unowned let unSelf: LJJListMenuView = self
         
@@ -271,7 +274,11 @@ class LJJListMenuView: UIView {
             
             })
         
-        return LJJListMenuView.sharedInstance
+        // 将下拉列表视图添加到当前视图控制器中
+        self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
+        
+        // 你同样可以这样用：
+        // currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
     }
     
     
@@ -296,6 +303,31 @@ class LJJListMenuView: UIView {
         })
         
         return self.contentView
+    }
+    
+    //MARK: ---取得当前显示的视图控制器---
+    func getCurrentVC() -> UIViewController {
+        var result:UIViewController?
+        var window = UIApplication.sharedApplication().keyWindow
+        if window?.windowLevel != UIWindowLevelNormal{
+            let windows = UIApplication.sharedApplication().windows
+            for tmpWin in windows{
+                if tmpWin.windowLevel == UIWindowLevelNormal{
+                    window = tmpWin
+                    break
+                }
+            }
+        }
+        
+        let fromView = window?.subviews[0]
+        if let nextRespnder = fromView?.nextResponder(){
+            if nextRespnder.isKindOfClass(UIViewController){
+                result = nextRespnder as? UIViewController
+            }else{
+                result = window?.rootViewController
+            }
+        }
+        return result!
     }
     
 }

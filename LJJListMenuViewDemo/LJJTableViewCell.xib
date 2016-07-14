@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cP-nH-rDU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="34"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
                         <color key="backgroundColor" red="0.49803921568627452" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.71764705882352942" green="0.71764705882352942" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
@@ -23,7 +23,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="4cP-nH-rDU" secondAttribute="bottom" id="8V8-p9-Y42"/>
+                    <constraint firstAttribute="bottom" secondItem="4cP-nH-rDU" secondAttribute="bottom" constant="1" id="8V8-p9-Y42"/>
                     <constraint firstItem="4cP-nH-rDU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IYC-ST-hAX"/>
                     <constraint firstItem="4cP-nH-rDU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="N5n-G4-rel"/>
                     <constraint firstAttribute="trailing" secondItem="4cP-nH-rDU" secondAttribute="trailing" id="rMU-Ui-M44"/>
