@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.view.backgroundColor = UIColor.orangeColor()
         
         // 实例化数据源对象
         self.dataArray = ["apple", "orange", "tiger", "mouse", "lion"]

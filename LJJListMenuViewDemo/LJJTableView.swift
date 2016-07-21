@@ -35,7 +35,16 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.dataArray = dataArray
         self.cellClickedBlock = cellClickedBlock
         
+        /// 设置tableView的背景颜色
+        self.backgroundColor = BGColorOfTableView
+        /// 隐藏纵向滚动指示器
+        self.showsVerticalScrollIndicator = false
+        /// 隐藏tableViewCell之间的默认的分割线
         self.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        
+        /// 设置tableView的行高
+        self.rowHeight = RowHeightOfTableView
         
         self.createTableView(self.dataArray)
     }
@@ -86,9 +95,8 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: -- Cell点击事件 --
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         self.cellClickedBlock(obj: self.dataArray[indexPath.row])
-        
-        
     }
     
 }

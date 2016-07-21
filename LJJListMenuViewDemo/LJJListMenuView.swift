@@ -10,34 +10,6 @@ import UIKit
 
 /// 点击cell后结果的回调
 public typealias ResultHandler = (data: AnyObject) -> Void
-/**
- 创建关于动画效果的枚举类
- 
- - ZOOM_NONE: 没有动画效果
- - ZOOM_IN:   淡出消失
- - ZOOM_OUT:  淡入出现
- */
-enum ANIMATIONSCALEZOOM:Int {
-    case ZOOM_NONE   = 0
-    case ZOOM_IN
-    case ZOOM_OUT
-}
-
-/**
- 创建一个关于弹出视图位置的枚举类
- 
- - LEFT:   弹出视图位置在父视图的左边
- - CENTER: 弹出视图位置在父视图的中央
- - RIGHT:  弹出视图位置在父视图的右边
- - CUSTOM: 自定义弹出视图的位置
- */
-enum PopViewPositon:Int {
-    case LEFT        = 0
-    case CENTER
-    case RIGHT
-    case CUSTOM
-}
-
 
 
 class LJJListMenuView: UIView {
@@ -81,12 +53,12 @@ class LJJListMenuView: UIView {
         print(size.width)
         print(size.height)
         
-        
-        #if  IsSystemDrawGraphicsMethod
-            /**
-             *  1.使用系统提供的画图方法画图
-             */
+        switch DrawGraphicsMethodType {
             
+            /**
+             *  1.使用系统提供的画图方法画带有箭头的图
+             */
+        case DrawUigraphicsType.SystemWithArrowType:
             // 获得绘图上下文
             let context: CGContextRef = UIGraphicsGetCurrentContext()!
             
@@ -126,12 +98,54 @@ class LJJListMenuView: UIView {
             
             // 填充路径围成的图形
             CGContextFillPath(context)
-            
-        #else
+            break
             /**
-             *  2.使用贝塞尔曲线进行画图
+             *  2.使用系统提供的画图方法画没有箭头的图
              */
+        case DrawUigraphicsType.SystemWithOutArrowType:
+            // 获得绘图上下文
+            let context: CGContextRef = UIGraphicsGetCurrentContext()!
             
+            // 设置抗齿距
+            CGContextSetAllowsAntialiasing(context, true)
+            
+            // 创建绘图的路径
+            let path: CGMutablePath = CGPathCreateMutable()
+            
+            // 设置绘制的图形的透明度，默认值为1：全透明
+            CGContextSetAlpha(context, 1)
+            
+            // 设置边框线的宽度
+            CGContextSetLineWidth(context, 0)
+            
+            // 设置边框线的颜色
+            CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+            
+            // 设置图形内部填充的颜色
+            CGContextSetFillColorWithColor(context, UIColor.grayColor().CGColor)
+            
+            // 开始移动的点的位置
+            CGPathMoveToPoint(path, nil, point.x, point.y)
+            print(point.x)
+            print(point.y)
+            
+            // 开始线性移动，后续准备添加圆角
+            CGPathAddLineToPoint(path, nil, point.x + size.width, point.y)
+            CGPathAddLineToPoint(path, nil, point.x + size.width, point.y + size.height)
+            CGPathAddLineToPoint(path, nil, abs(point.x - size.width / 2), point.y + size.height)
+            CGPathAddLineToPoint(path, nil, abs(point.x - size.width / 2), point.y)
+            CGPathAddLineToPoint(path, nil, point.x, point.y)
+            
+            // 为上下文添加绘图路径
+            CGContextAddPath(context, path)
+            
+            // 填充路径围成的图形
+            CGContextFillPath(context)
+            break
+            /**
+             *  3.使用贝塞尔曲线进行画带有箭头的图
+             */
+        case DrawUigraphicsType.BezierPathWithArrowType:
             // 创建贝塞尔曲线路径
             let bezierPath = UIBezierPath.init()
             
@@ -167,8 +181,13 @@ class LJJListMenuView: UIView {
             
             // 将新建的图层添加到当前视图对象图层中
             self.layer.addSublayer(layer)
-            
-        #endif
+            break
+            /**
+             *  4.使用贝塞尔曲线进行画没有箭头的图
+             */
+        case DrawUigraphicsType.BezierPathWihthOutArrowType:
+            break
+        }
         
     }
     
@@ -181,26 +200,31 @@ class LJJListMenuView: UIView {
             self.transform = CGAffineTransformMakeScale(1.0, 1.0)
             break
         case .ZOOM_OUT:
-            self.transform = CGAffineTransformMakeScale(0.05, 0.05)
-            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, animations: {
-                self.transform = CGAffineTransformMakeScale(1, 1)
-                
-            }) { (true) in
-                // do something there when animation compeleted...
-            }
+            self.transform = CGAffineTransformMakeScale(0.0, 0.0)
+            /// 具有阻尼效果的动态弹出视图动画
+            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 3, options: UIViewAnimationOptions.CurveEaseOut, animations: { 
+                self.transform = CGAffineTransformIdentity
+                }, completion: { (true) in
+                    // do something there when animation completed...
+            })
+            
+            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME / 3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { 
+                //
+                }, completion: { (true) in
+                    //
+            })
             break
         case .ZOOM_IN:
-            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, animations: {
-                self.transform = CGAffineTransformMakeScale(0.05, 0.05)
-                
-            }) { (true) in
-                // do something there when animation compeleted...
-                self.removeFromSuperview()
+            if self.superview != nil {
+                UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, delay: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { 
+                    self.transform = CGAffineTransformMakeScale(0.005, 0.005)
+                    }, completion: { (true) in
+                        self.removeFromSuperview()
+                })
             }
             break
             
         } // switch - loop end>>
-        
     }
     
     
@@ -221,13 +245,12 @@ class LJJListMenuView: UIView {
         LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.ZOOM_OUT)
         
         // 将tableView添加到下拉列表中
-        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewOfPopView(dataArray, resultHandler: { (data) in
+        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewInPopView(dataArray, resultHandler: { (data) in
             resultHandler(data: data)
         }))
         
         // 将下拉列表视图添加到当前视图控制器中
         currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
-        
         // 你同样可以这样使用：
         // self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
     }
@@ -267,7 +290,7 @@ class LJJListMenuView: UIView {
         LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.ZOOM_OUT)
         
         // 将tableView添加到下拉列表中
-        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewOfPopView(dataArray) { (data) in
+        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewInPopView(dataArray) { (data) in
             
             // 在这里回调cell点击事件的结果
             resultHandler(data: data)
@@ -276,7 +299,6 @@ class LJJListMenuView: UIView {
         
         // 将下拉列表视图添加到当前视图控制器中
         self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
-        
         // 你同样可以这样用：
         // currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
     }
@@ -290,7 +312,7 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的LJJTableView对象
      */
-    func createTableViewOfPopView(dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJTableView {
+    func createTableViewInPopView(dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJTableView {
         
         self.contentView = LJJTableView.init(frame: CGRectMake(PaddingLeft, PaddingTop, PopViewWidth - PaddingLeft - PaddingRight, PopViewHeight - PaddingTop - PaddingBottom), style: UITableViewStyle.Plain, dataArray: dataArray, cellClickedBlock: { (obj) in
             
