@@ -9,35 +9,7 @@
 import UIKit
 
 /// 点击cell后结果的回调
-public typealias ResultHandler = (data: AnyObject) -> Void
-/**
- 创建关于动画效果的枚举类
- 
- - ZOOM_NONE: 没有动画效果
- - ZOOM_IN:   淡出消失
- - ZOOM_OUT:  淡入出现
- */
-enum ANIMATIONSCALEZOOM:Int {
-    case ZOOM_NONE   = 0
-    case ZOOM_IN
-    case ZOOM_OUT
-}
-
-/**
- 创建一个关于弹出视图位置的枚举类
- 
- - LEFT:   弹出视图位置在父视图的左边
- - CENTER: 弹出视图位置在父视图的中央
- - RIGHT:  弹出视图位置在父视图的右边
- - CUSTOM: 自定义弹出视图的位置
- */
-enum PopViewPositon:Int {
-    case LEFT        = 0
-    case CENTER
-    case RIGHT
-    case CUSTOM
-}
-
+public typealias ResultHandler = (_ data: AnyObject) -> Void
 
 
 class LJJListMenuView: UIView {
@@ -46,8 +18,8 @@ class LJJListMenuView: UIView {
     var contentView: LJJTableView!
     
     /// 单利对象
-    internal static var sharedInstance: LJJListMenuView = {
-        return LJJListMenuView(frame: CGRectZero)
+    static var sharedInstance: LJJListMenuView = {
+        return LJJListMenuView(frame: CGRect.zero)
     }()
     
     
@@ -63,7 +35,7 @@ class LJJListMenuView: UIView {
         
         // 设置创建的新的视图的背景颜色为透明色
         // 默认颜色为黑色
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,137 +43,104 @@ class LJJListMenuView: UIView {
     }
     
     
-    //MARK: 重写UIView的绘图方法
-    override func drawRect(rect: CGRect) {
+    //MARK: ---重写UIView的绘图方法---
+    override func draw(_ rect: CGRect) {
         
-        // rect:即frame
         // 获得需要绘制的图形的起点
-        let point: CGPoint = CGPointMake(PopViewWidth / 2, ZERO)
+        let point: CGPoint = CGPoint(x: PopViewWidth / 2, y: ZERO)
         // 获得需要绘制的图形的frame
         let size: CGSize = rect.size
         print(size.width)
         print(size.height)
         
-        
-        #if  IsSystemDrawGraphicsMethod
+        switch DrawGraphicsMethodType {
+            
             /**
-             *  1.使用系统提供的画图方法画图
+             *  1.使用贝塞尔曲线进行画带有箭头的图
              */
+            case DrawUigraphicsType.bezierPathWithArrowType:
+                // 创建贝塞尔曲线路径
+                let bezierPath = UIBezierPath.init()
             
-            // 获得绘图上下文
-            let context: CGContextRef = UIGraphicsGetCurrentContext()!
+                // 确定路径的起点
+                bezierPath.move(to: point)
+                bezierPath.lineCapStyle = CGLineCap.round
+                bezierPath.lineJoinStyle = CGLineJoin.round
             
-            // 设置抗齿距
-            CGContextSetAllowsAntialiasing(context, true)
+                // 根据路径添加直线
+                bezierPath.addLine(to: CGPoint(x: point.x + TriangleBottom / 2, y: point.y + TriangleHeight))
+                bezierPath.addLine(to: CGPoint(x: point.x + PopViewWidth / 2, y: point.y + TriangleHeight))
+                bezierPath.addLine(to: CGPoint(x: point.x + PopViewWidth / 2, y: point.y + size.height))
+                bezierPath.addLine(to: CGPoint(x: abs(point.x - size.width / 2), y: point.y + size.height))
+                bezierPath.addLine(to: CGPoint(x: abs(point.x - size.width / 2), y: point.y + TriangleHeight))
+                bezierPath.addLine(to: CGPoint(x: abs(point.x - TriangleBottom / 2), y: point.y + TriangleHeight))
+                bezierPath.addLine(to: CGPoint(x: point.x, y: point.y))
             
-            // 创建绘图的路径
-            let path: CGMutablePath = CGPathCreateMutable()
+                // 创建图层对象
+                let layer: CAShapeLayer = CAShapeLayer.init()
             
-            // 设置绘制的图形的透明度，默认值为1：全透明
-            CGContextSetAlpha(context, 1)
+                // 确定图层对象的frame(框架)
+                layer.bounds = rect
             
-            // 设置边框线的宽度
-            CGContextSetLineWidth(context, 2)
+                // 确定图层的位置坐标
+                layer.position = CGPoint(x: rect.size.width / 2, y: rect.size.height / 2)
             
-            // 设置边框线的颜色
-            CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+                // 设置图层边框线的颜色
+                layer.strokeColor = StrokeColor
             
-            // 设置图形内部填充的颜色
-            CGContextSetFillColorWithColor(context, UIColor.grayColor().CGColor)
+                // 设置图层的内部填充颜色
+                layer.fillColor = FillColor
             
-            // 开始移动的点的位置
-            CGPathMoveToPoint(path, nil, point.x, point.y)
-            print(point.x)
-            print(point.y)
+                // 将贝塞尔曲线的路径作为图层的路径
+                layer.path = bezierPath.cgPath
             
-            // 开始线性移动，后续准备添加圆角
-            CGPathAddLineToPoint(path, nil, point.x + TriangleBottom / 2, point.y + TriangleHeight)
-            CGPathAddLineToPoint(path, nil, point.x + size.width, point.y + TriangleHeight)
-            CGPathAddLineToPoint(path, nil, point.x + size.width, point.y + size.height + TriangleHeight)
-            CGPathAddLineToPoint(path, nil, abs(point.x - size.width / 2), point.y + size.height + TriangleHeight)
-            CGPathAddLineToPoint(path, nil, abs(point.x - size.width / 2), point.y + TriangleHeight)
-            CGPathAddLineToPoint(path, nil, abs(point.x - TriangleBottom / 2), point.y + TriangleHeight)
-            
-            // 为上下文添加绘图路径
-            CGContextAddPath(context, path)
-            
-            // 填充路径围成的图形
-            CGContextFillPath(context)
-            
-        #else
+                // 将新建的图层添加到当前视图对象图层中
+                self.layer.addSublayer(layer)
+                break
             /**
-             *  2.使用贝塞尔曲线进行画图
+             *  2.使用贝塞尔曲线进行画没有箭头的图
              */
-            
-            // 创建贝塞尔曲线路径
-            let bezierPath = UIBezierPath.init()
-            
-            // 确定路径的起点
-            bezierPath.moveToPoint(point)
-            
-            // 根据路径添加直线
-            bezierPath.addLineToPoint(CGPointMake(point.x + TriangleBottom / 2, point.y + TriangleHeight))
-            bezierPath.addLineToPoint(CGPointMake(point.x + PopViewWidth / 2, point.y + TriangleHeight))
-            bezierPath.addLineToPoint(CGPointMake(point.x + PopViewWidth / 2, point.y + size.height))
-            bezierPath.addLineToPoint(CGPointMake( abs(point.x - size.width / 2), point.y + size.height))
-            bezierPath.addLineToPoint(CGPointMake(abs(point.x - size.width / 2), point.y + TriangleHeight))
-            bezierPath.addLineToPoint(CGPointMake(abs(point.x - TriangleBottom / 2), point.y + TriangleHeight))
-            bezierPath.addLineToPoint(CGPointMake(point.x, point.y))
-            
-            // 创建图层对象
-            let layer: CAShapeLayer = CAShapeLayer.init()
-            
-            // 确定图层对象的frame(框架)
-            layer.bounds = rect
-            
-            // 确定图层的位置坐标
-            layer.position = CGPointMake(rect.size.width / 2, rect.size.height / 2)
-            
-            // 设置图层边框线的颜色
-            layer.strokeColor = StrokeColor
-            
-            // 设置图层的内部填充颜色
-            layer.fillColor = FillColor
-            
-            // 将贝塞尔曲线的路径作为图层的路径
-            layer.path = bezierPath.CGPath
-            
-            // 将新建的图层添加到当前视图对象图层中
-            self.layer.addSublayer(layer)
-            
-        #endif
+            case DrawUigraphicsType.bezierPathWihthOutArrowType:
+                // 该方法可自行拓展
+                break
+        }
         
     }
     
     
-    //MARK: 弹出视图添加淡入淡出动画效果
-    func popViewScaleZoom(scaleZoom: ANIMATIONSCALEZOOM) {
+    //MARK: ---弹出视图添加淡入淡出动画效果---
+    func popViewScaleZoom(_ scaleZoom: ANIMATIONSCALEZOOM) {
         
         switch scaleZoom {
-        case .ZOOM_NONE:
-            self.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        case .zoom_NONE:
+            self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             break
-        case .ZOOM_OUT:
-            self.transform = CGAffineTransformMakeScale(0.05, 0.05)
-            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, animations: {
-                self.transform = CGAffineTransformMakeScale(1, 1)
-                
-            }) { (true) in
-                // do something there when animation compeleted...
-            }
+        case .zoom_OUT:
+            self.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+            /// 具有阻尼效果的动态弹出视图动画
+            UIView.animate(withDuration: ANIMATION_CONTINUE_TIME, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 3, options: UIViewAnimationOptions.curveEaseOut, animations: { 
+                self.transform = CGAffineTransform.identity
+                }, completion: { (true) in
+                    // do something there when animation completed...
+            })
+            
+            UIView.animate(withDuration: ANIMATION_CONTINUE_TIME / 3, delay: 0, options: UIViewAnimationOptions.curveLinear, animations: { 
+                //
+                }, completion: { (true) in
+                    //
+            })
             break
-        case .ZOOM_IN:
-            UIView.animateWithDuration(ANIMATION_CONTINUE_TIME, animations: {
-                self.transform = CGAffineTransformMakeScale(0.05, 0.05)
-                
-            }) { (true) in
-                // do something there when animation compeleted...
-                self.removeFromSuperview()
+        case .zoom_IN:
+            if self.superview != nil {
+                UIView.animate(withDuration: ANIMATION_CONTINUE_TIME, delay: 0, options: UIViewAnimationOptions(), animations: { 
+                    self.transform = CGAffineTransform(scaleX: 0.005, y: 0.005)
+                    }, completion: { (true) in
+                        self.removeFromSuperview()
+                })
             }
             break
             
         } // switch - loop end>>
-        
     }
     
     
@@ -214,19 +153,22 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的位置居中的下拉列表视图对象
      */
-    func setTheCenterPositionOfPopView(mainView: UIView, dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJListMenuView{
+    func setTheCenterPositionOfPopView(_ mainView: UIView, dataArray: [AnyObject], resultHandler: @escaping ResultHandler) {
         
-        LJJListMenuView.sharedInstance = LJJListMenuView.init(frame: CGRectMake(mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2, mainView.frame.origin.y + mainView.frame.size.height, PopViewWidth, PopViewHeight))
+        LJJListMenuView.sharedInstance = LJJListMenuView.init(frame: CGRect(x: mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2, y: mainView.frame.origin.y + mainView.frame.size.height, width: PopViewWidth, height: PopViewHeight))
         
         // 下拉列表动态弹出
-        LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.ZOOM_OUT)
+        LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.zoom_OUT)
         
         // 将tableView添加到下拉列表中
-        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewOfPopView(dataArray, resultHandler: { (data) in
-            resultHandler(data: data)
+        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewInPopView(dataArray, resultHandler: { (data) in
+            resultHandler(data)
         }))
         
-        return LJJListMenuView.sharedInstance
+        // 将下拉列表视图添加到当前视图控制器中
+        currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
+        // 你同样可以这样使用：
+//         self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
     }
     
     
@@ -241,37 +183,40 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的可自定义位置的下拉列表视图对象
      */
-    func setTheAllPositionsOfPopView(mainView: UIView, popViewPosition: PopViewPositon, offSize: CGPoint, dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJListMenuView{
+    func setTheAllPositionsOfPopView(_ mainView: UIView, popViewPosition: PopViewPositon, offSize: CGPoint, dataArray: [AnyObject], resultHandler: @escaping ResultHandler) {
         
         //        unowned let unSelf: LJJListMenuView = self
         
         switch popViewPosition {
-        case .LEFT:
-            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRectMake(mainView.frame.origin.x - PopViewWidth / 2, mainView.frame.origin.y + mainView.frame.size.height, PopViewWidth, PopViewHeight))
+        case .left:
+            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRect(x: mainView.frame.origin.x - PopViewWidth / 2, y: mainView.frame.origin.y + mainView.frame.size.height, width: PopViewWidth, height: PopViewHeight))
             break
-        case .CENTER:
-            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRectMake(mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2, mainView.frame.origin.y + mainView.frame.size.height, PopViewWidth, PopViewHeight))
+        case .center:
+            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRect(x: mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2, y: mainView.frame.origin.y + mainView.frame.size.height, width: PopViewWidth, height: PopViewHeight))
             break
-        case .RIGHT:
-            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRectMake(mainView.bounds.size.width / 2, mainView.bounds.height, PopViewWidth, PopViewHeight))
+        case .right:
+            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRect(x: mainView.bounds.size.width / 2, y: mainView.bounds.height, width: PopViewWidth, height: PopViewHeight))
             break
-        case .CUSTOM:
-            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRectMake(mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2 + offSize.x, mainView.frame.origin.y + mainView.frame.size.height + offSize.y, PopViewWidth, PopViewHeight))
+        case .custom:
+            LJJListMenuView.sharedInstance = LJJListMenuView(frame: CGRect(x: mainView.frame.origin.x + (mainView.frame.size.width - PopViewWidth) / 2 + offSize.x, y: mainView.frame.origin.y + mainView.frame.size.height + offSize.y, width: PopViewWidth, height: PopViewHeight))
             break
         }
         
         // 下拉列表动态弹出
-        LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.ZOOM_OUT)
+        LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.zoom_OUT)
         
         // 将tableView添加到下拉列表中
-        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewOfPopView(dataArray) { (data) in
+        LJJListMenuView.sharedInstance.addSubview(LJJListMenuView.sharedInstance.createTableViewInPopView(dataArray) { (data) in
             
             // 在这里回调cell点击事件的结果
-            resultHandler(data: data)
+            resultHandler(data)
             
             })
         
-        return LJJListMenuView.sharedInstance
+        // 将下拉列表视图添加到当前视图控制器中
+        self.getCurrentVC().view.addSubview(LJJListMenuView.sharedInstance)
+        // 你同样可以这样用：
+//        currentWindow.rootViewController?.view.addSubview(LJJListMenuView.sharedInstance)
     }
     
     
@@ -283,19 +228,44 @@ class LJJListMenuView: UIView {
      
      - returns: 返回一个全新的LJJTableView对象
      */
-    func createTableViewOfPopView(dataArray: [AnyObject], resultHandler: ResultHandler) -> LJJTableView {
+    func createTableViewInPopView(_ dataArray: [AnyObject], resultHandler: @escaping ResultHandler) -> LJJTableView {
         
-        self.contentView = LJJTableView.init(frame: CGRectMake(PaddingLeft, PaddingTop, PopViewWidth - PaddingLeft - PaddingRight, PopViewHeight - PaddingTop - PaddingBottom), style: UITableViewStyle.Plain, dataArray: dataArray, cellClickedBlock: { (obj) in
+        self.contentView = LJJTableView.init(frame: CGRect(x: PaddingLeft, y: PaddingTop, width: PopViewWidth - PaddingLeft - PaddingRight, height: PopViewHeight - PaddingTop - PaddingBottom), style: UITableViewStyle.plain, dataArray: dataArray, cellClickedBlock: { (obj) in
             
             // 在这里执行点击cell之后的结果回调和其他相关操作
-            resultHandler(data: obj)
+            resultHandler(obj)
             
             // 点击对应的Cell后下拉列表消失
-            LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.ZOOM_IN)
+            LJJListMenuView.sharedInstance.popViewScaleZoom(ANIMATIONSCALEZOOM.zoom_IN)
             
         })
         
         return self.contentView
+    }
+    
+    //MARK: ---取得当前显示的视图控制器---
+    func getCurrentVC() -> UIViewController {
+        var result:UIViewController?
+        var window = UIApplication.shared.keyWindow
+        if window?.windowLevel != UIWindowLevelNormal{
+            let windows = UIApplication.shared.windows
+            for tmpWin in windows{
+                if tmpWin.windowLevel == UIWindowLevelNormal{
+                    window = tmpWin
+                    break
+                }
+            }
+        }
+        
+        let fromView = window?.subviews[0]
+        if let nextRespnder = fromView?.next{
+            if nextRespnder.isKind(of: UIViewController.self){
+                result = nextRespnder as? UIViewController
+            }else{
+                result = window?.rootViewController
+            }
+        }
+        return result!
     }
     
 }
