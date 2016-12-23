@@ -23,16 +23,16 @@ class ViewController: UIViewController {
 //        self.view.backgroundColor = UIColor.orangeColor()
         
         // 实例化数据源对象
-        self.dataArray = ["apple", "orange", "tiger", "mouse", "lion"]
+        self.dataArray = ["apple" as AnyObject, "orange" as AnyObject, "tiger" as AnyObject, "mouse" as AnyObject, "lion" as AnyObject]
         self.isClicked = true
     }
     
     // 调用自定义下拉列表位置方法
-    @IBAction func chooseCustomBtnClicked(sender: UIButton) {
+    @IBAction func chooseCustomBtnClicked(_ sender: UIButton) {
         unowned let unSelf:ViewController = self
         
         if self.isClicked == true {
-            LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.CUSTOM, offSize: CGPointMake(10, 20), dataArray: self.dataArray, resultHandler: { (data) in
+            LJJListMenuView.sharedInstance.setTheAllPositionsOfPopView(self.itemTF1, popViewPosition: PopViewPositon.custom, offSize: CGPoint(x: 10, y: 20), dataArray: self.dataArray, resultHandler: { (data) in
                 unSelf.itemTF1.text = data as? String
                 unSelf.isClicked = true
             })
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     // 调用下拉列表位置默认居中方法
-    @IBAction func chooseCenterBtnClicked(sender: UIButton) {
+    @IBAction func chooseCenterBtnClicked(_ sender: UIButton) {
         unowned let unSelf:ViewController = self
         
         if self.isClicked == true {

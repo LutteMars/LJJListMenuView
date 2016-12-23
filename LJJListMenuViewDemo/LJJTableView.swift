@@ -9,7 +9,7 @@
 import UIKit
 
 /// cell被点击后的结果回调函数
-public typealias CellClickedBlock = (obj: AnyObject) -> Void
+public typealias CellClickedBlock = (_ obj: AnyObject) -> Void
 
 class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
@@ -29,8 +29,8 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
      
      - returns: 返回一个全新的LJJTableView类的对象
      */
-    init(frame: CGRect, style: UITableViewStyle, dataArray: [AnyObject], cellClickedBlock: CellClickedBlock) {
-        super.init(frame: frame, style: UITableViewStyle.Plain)
+    init(frame: CGRect, style: UITableViewStyle, dataArray: [AnyObject], cellClickedBlock: @escaping CellClickedBlock) {
+        super.init(frame: frame, style: UITableViewStyle.plain)
         
         self.dataArray = dataArray
         self.cellClickedBlock = cellClickedBlock
@@ -40,7 +40,7 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         /// 隐藏纵向滚动指示器
         self.showsVerticalScrollIndicator = false
         /// 隐藏tableViewCell之间的默认的分割线
-        self.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.separatorStyle = UITableViewCellSeparatorStyle.none
         
         
         /// 设置tableView的行高
@@ -57,8 +57,13 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
      创建tableView方法
      
      - parameter dataArray: 数据源
+    【特别说明】：在Swift3中，如果一个方法有返回值，而调用的时候没有接收该方法的返回值，
+     Xcode会报出警告，告诉你这可能会存在潜在的问题。
+    【解决方法】：在该方法前有`discardableResult`关键字修饰。
      */
-    func createTableView(dataArray: [AnyObject]) -> LJJTableView {
+    
+    @discardableResult
+    func createTableView(_ dataArray: [AnyObject]) -> LJJTableView {
         self.delegate = self
         self.dataSource = self
         
@@ -72,12 +77,12 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     //MARK: -- TableView协议代理方法 --
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
     }
     
     // 出列cell
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         #if false
             // 1.系统自有cell类型
@@ -85,8 +90,8 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = self.dataArray[indexPath.row] as? String
         #else
             // 2.自定义cell类型
-            let cell = NSBundle.mainBundle().loadNibNamed("LJJTableViewCell", owner: nil, options: nil)[0] as! LJJTableViewCell
-            cell.listItemLabel.text = self.dataArray[indexPath.row] as? String
+            let cell = Bundle.main.loadNibNamed("LJJTableViewCell", owner: nil, options: nil)?[0] as! LJJTableViewCell
+            cell.listItemLabel.text = self.dataArray[(indexPath as NSIndexPath).row] as? String
             
         #endif
         
@@ -94,9 +99,9 @@ class LJJTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     //MARK: -- Cell点击事件 --
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.cellClickedBlock(obj: self.dataArray[indexPath.row])
+        self.cellClickedBlock(self.dataArray[(indexPath as NSIndexPath).row])
     }
     
 }
