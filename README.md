@@ -27,7 +27,7 @@
 --
 - **iOS 8.0+ / Mac OS 10.10+**
 - **Xcode 7.3**
-- **Swift 2.0**
+- **Swift 3.0**
 
 ### 4.交流（Communication）
 --
